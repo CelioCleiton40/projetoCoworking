@@ -14,7 +14,6 @@ export default function Home() {
                     height={38}
                     priority
                 />
-
                 {/* Welcome Text */}
                 <h1 className="text-3xl font-bold text-white">
                     Bem-vindo ao 2CM SoftWare
