@@ -1,0 +1,45 @@
+CRM
+	Nova Negociação
+	Listar Negociações
+Cliente
+	Novo Cliente
+	Listar Clientes
+	
+Contrato
+	Novo Contrato
+	Listar Contratos
+Venda
+	Nova Venda
+	Listar Vendas
+	Pacotes de Horas
+Salas de Reunião
+	Agenda
+	Reservas de Sala
+A. Compartilhados
+Esc. Privativos
+Atendimento
+	Novo Atendimento
+	Listar Atendimentos
+Correspondência
+	Nova Correspondência
+	Listar Correspondência
+Financeiro
+	Contas a Receber
+	Contas a Pagar
+	Extrato de Contas
+	Exportação Contábil
+Faturamento
+	Cobrança Avulsa
+	Cobrança Contratual
+Relatórios
+	CRM
+	Clientes
+	Contratos
+	Vendas
+	Espaços de Trabalhos
+	Contas a Receber
+	Contas a Pagar
+	Gerencial
+	Faturamento
+	E-mails Enviados
+	Outros

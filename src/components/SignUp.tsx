@@ -1,17 +1,47 @@
 'use client';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 
 const SignUp: React.FC = () => {
+  const router = useRouter();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Implement your signup logic here
-    console.log('Submitted:', name, email, password, confirmPassword);
+    setError(null);
+        setIsLoading(true);
+
+        if (password !== confirmPassword) {
+            setError('As senhas não conferem!');
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            // Simulação de sucesso no cadastro
+            const userData = {
+                name,
+                email,
+                // (NUNCA armazene a senha real no Local Storage!)
+            };
+
+            // Salvar dados do usuário no Local Storage
+            localStorage.setItem('userData', JSON.stringify(userData));
+            localStorage.setItem('isLoggedIn', 'true'); // Marca o usuário como logado
+
+            console.log('Cadastro realizado com sucesso!');
+            router.push('/dashboard'); // Redireciona para o dashboard após o cadastro
+        } catch (err: any) {
+            setError(err.message || 'Erro ao realizar o cadastro.');
+        } finally {
+            setIsLoading(false);
+        }
   };
 
   return (

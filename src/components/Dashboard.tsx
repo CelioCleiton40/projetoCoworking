@@ -7,6 +7,7 @@ import {
     AiOutlineFileText,
     AiOutlineShoppingCart
  } from 'react-icons/ai';
+ import Image from "next/image";
 
 const Dashboard: React.FC = () => {
     const contractsData = [

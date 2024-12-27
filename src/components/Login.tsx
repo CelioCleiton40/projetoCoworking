@@ -1,17 +1,50 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from "next/image";
 import SignUp from './SignUp';
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const router = useRouter();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+    useEffect(() => {
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      if (isLoggedIn === 'true') {
+          router.push('/dashboard');
+      }
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Implement your authentication logic here
-    console.log('Submitted:', email, password);
+    setError(null);
+    setIsLoading(true);
+
+    try {
+        //Simulação de login (substitua pela sua lógica real)
+        const storedUserData = localStorage.getItem('userData');
+        if (!storedUserData) {
+            throw new Error('Usuário não encontrado.');
+        }
+
+        const userData = JSON.parse(storedUserData);
+
+        if (userData.email !== email || userData.password !== password) { //Simulação de verificação de senha
+            throw new Error("Credenciais inválidas.");
+        }
+
+        localStorage.setItem('isLoggedIn', 'true');
+        router.push('/dashboard');
+    } catch (err: any) {
+        setError(err.message);
+    } finally {
+        setIsLoading(false);
+    }
   };
 
   return (
